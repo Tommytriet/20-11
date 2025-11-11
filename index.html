@@ -160,13 +160,30 @@
 </head>
 
 <body>
-  <!-- Nút bật/tắt nhạc -->
+  <!-- Gợi ý bật nhạc -->
+  <div id="hint" style="
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.85);
+    color: #d9534f;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    animation: fadeInOut 4s ease-in-out forwards;
+    z-index: 999;
+  ">
+    👉 Nhấn vào hoa để bật nhạc 🎵
+  </div>
+
   <div id="music-control">
     <button id="music-toggle" onclick="toggleMusic()">🎵 Tắt nhạc</button>
   </div>
 
-  <!-- Nhạc nền -->
-  <audio id="background-music" loop preload="auto" controls style="display:none;">
+  <audio id="background-music" preload="auto" loop muted playsinline style="display:none;">
     <source src="song.mp3" type="audio/mpeg">
   </audio>
 
@@ -186,26 +203,20 @@
   <script>
     const music = document.getElementById('background-music');
 
-    // Bắt sự kiện click đầu tiên để đảm bảo nhạc phát được trên Chrome/Edge
-    window.addEventListener('click', () => {
-      if (music.paused) {
-        music.play().catch(err => console.log('⚠️ Autoplay bị chặn:', err));
-      }
-    }, { once: true });
-
+    // Đảm bảo phát nhạc sau click đầu tiên
     function revealContent() {
       document.getElementById('rose-container').style.display = 'none';
       document.getElementById('content').style.display = 'block';
       document.getElementById('music-control').style.display = 'block';
 
+      music.muted = false; // bật tiếng trước khi play
       const playPromise = music.play();
       if (playPromise !== undefined) {
         playPromise.then(() => {
-          console.log('✅ Nhạc đang phát');
-        }).catch(() => {
-          console.log('⚠️ Trình duyệt chặn autoplay');
-          document.getElementById('music-toggle').innerHTML = '🔇 Bật nhạc';
-          document.getElementById('music-toggle').style.background = 'rgba(255,152,0,0.9)';
+          console.log('🎶 Nhạc đã phát');
+        }).catch(err => {
+          console.log('⚠️ Trình duyệt chặn autoplay:', err);
+          alert('🔊 Hãy bấm nút "Bật nhạc" ở góc trên để nghe bài hát nhé!');
         });
       }
 
@@ -277,6 +288,10 @@
       document.body.appendChild(f);
       setTimeout(() => f.remove(), duration * 1000);
     }
+
+    // hiệu ứng hiện-gợi ý
+    const hint = document.getElementById('hint');
+    setTimeout(() => hint.remove(), 4000);
   </script>
 </body>
 </html>
