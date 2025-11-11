@@ -166,7 +166,7 @@
   </div>
 
   <!-- Nhạc nền -->
-  <audio id="background-music" loop preload="auto">
+  <audio id="background-music" loop preload="auto" controls style="display:none;">
     <source src="song.mp3" type="audio/mpeg">
   </audio>
 
@@ -186,15 +186,24 @@
   <script>
     const music = document.getElementById('background-music');
 
+    // Bắt sự kiện click đầu tiên để đảm bảo nhạc phát được trên Chrome/Edge
+    window.addEventListener('click', () => {
+      if (music.paused) {
+        music.play().catch(err => console.log('⚠️ Autoplay bị chặn:', err));
+      }
+    }, { once: true });
+
     function revealContent() {
       document.getElementById('rose-container').style.display = 'none';
       document.getElementById('content').style.display = 'block';
       document.getElementById('music-control').style.display = 'block';
 
-      // Phát nhạc (đã tương thích Chrome/Edge autoplay)
       const playPromise = music.play();
       if (playPromise !== undefined) {
-        playPromise.catch(() => {
+        playPromise.then(() => {
+          console.log('✅ Nhạc đang phát');
+        }).catch(() => {
+          console.log('⚠️ Trình duyệt chặn autoplay');
           document.getElementById('music-toggle').innerHTML = '🔇 Bật nhạc';
           document.getElementById('music-toggle').style.background = 'rgba(255,152,0,0.9)';
         });
