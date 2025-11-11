@@ -1,341 +1,273 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chúc Mừng Ngày Nhà Giáo Việt Nam 20/11</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #f4f4f9 0%, #e8e8f0 100%);
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chúc Mừng Ngày Nhà Giáo Việt Nam 20/11</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #f4f4f9 0%, #e8e8f0 100%);
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
 
-        /* Container cho hoa hồng */
-        #rose-container {
-            position: relative;
-            display: inline-block;
-        }
+    #rose-container {
+      position: relative;
+      display: inline-block;
+    }
 
-        /* Bông hoa hồng ban đầu */
-        #rose-link {
-            text-decoration: none;
-            cursor: pointer;
-            font-size: 100px;
-            display: inline-block;
-            position: relative;
-            z-index: 2;
-            animation: floatRose 2s ease-in-out infinite, twinkleRose 1s ease-in-out infinite;
-        }
+    #rose-link {
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 100px;
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+      animation: floatRose 2s ease-in-out infinite, twinkleRose 1s ease-in-out infinite;
+    }
 
-        /* Hiệu ứng bay lơ lửng */
-        @keyframes floatRose {
-            0%, 100% {
-                transform: translateY(0px) rotate(-5deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(5deg);
-            }
-        }
+    @keyframes floatRose {
+      0%, 100% { transform: translateY(0px) rotate(-5deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
 
-        /* Hiệu ứng nhấp nháy */
-        @keyframes twinkleRose {
-            0%, 100% {
-                opacity: 1;
-                text-shadow: 0 0 10px rgba(255, 100, 100, 0.8), 0 0 20px rgba(255, 100, 100, 0.6), 0 0 30px rgba(255, 100, 100, 0.4);
-            }
-            50% {
-                opacity: 0.6;
-                text-shadow: 0 0 20px rgba(255, 100, 100, 1), 0 0 40px rgba(255, 100, 100, 0.8), 0 0 60px rgba(255, 100, 100, 0.6);
-            }
-        }
+    @keyframes twinkleRose {
+      0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(255, 100, 100, 0.8),
+                     0 0 20px rgba(255, 100, 100, 0.6),
+                     0 0 30px rgba(255, 100, 100, 0.4);
+      }
+      50% {
+        opacity: 0.6;
+        text-shadow: 0 0 20px rgba(255, 100, 100, 1),
+                     0 0 40px rgba(255, 100, 100, 0.8),
+                     0 0 60px rgba(255, 100, 100, 0.6);
+      }
+    }
 
-        /* Vầng sáng xung quanh */
-        #rose-container::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(255, 100, 100, 0.4) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 1;
-            animation: pulseGlow 1.5s ease-in-out infinite;
-        }
+    #rose-container::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(255, 100, 100, 0.4) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 1;
+      animation: pulseGlow 1.5s ease-in-out infinite;
+    }
 
-        @keyframes pulseGlow {
-            0%, 100% {
-                transform: translate(-50%, -50%) scale(0.8);
-                opacity: 0.3;
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.2);
-                opacity: 0.6;
-            }
-        }
+    @keyframes pulseGlow {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.3;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.6;
+      }
+    }
 
-        #rose-link:hover {
-            animation: floatRose 2s ease-in-out infinite, twinkleRose 0.5s ease-in-out infinite, scaleUp 0.3s ease-out forwards;
-        }
+    #rose-link:hover {
+      animation: floatRose 2s ease-in-out infinite,
+                 twinkleRose 0.5s ease-in-out infinite,
+                 scaleUp 0.3s ease-out forwards;
+    }
 
-        @keyframes scaleUp {
-            to {
-                transform: scale(1.3);
-            }
-        }
+    @keyframes scaleUp {
+      to { transform: scale(1.3); }
+    }
 
-        /* Nội dung sau khi click */
-        #content {
-            display: none;
-            text-align: center;
-            padding: 30px;
-            max-width: 80%;
-            z-index: 10;
-            position: relative;
-        }
+    #content {
+      display: none;
+      text-align: center;
+      padding: 30px;
+      max-width: 80%;
+      z-index: 10;
+      position: relative;
+    }
 
-        #message {
-            font-size: 2.5em;
-            color: #d9534f;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
+    #message {
+      font-size: 2.5em;
+      color: #d9534f;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
 
-        #scene {
-            font-size: 4em;
-            margin: 20px 0;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 200px;
-        }
+    #scene {
+      font-size: 4em;
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 200px;
+    }
 
-        #student {
-            position: relative;
-        }
+    .flying-bouquet {
+      position: fixed;
+      font-size: 40px;
+      z-index: 5;
+      opacity: 0;
+    }
 
-        #teacher {
-            position: relative;
-        }
+    .flower {
+      position: absolute;
+      top: -10px;
+      color: #d9534f;
+      font-size: 20px;
+      animation: fall linear infinite;
+      z-index: 1;
+      opacity: 0.8;
+    }
 
-        /* Hiệu ứng bó hoa bay từ học sinh sang cô giáo */
-        .flying-bouquet {
-            position: fixed;
-            font-size: 40px;
-            z-index: 5;
-            opacity: 0;
-        }
+    @keyframes fall {
+      to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
 
-        /* Hiệu ứng hoa rơi từ trên xuống */
-        .flower {
-            position: absolute;
-            top: -10px;
-            color: #d9534f;
-            font-size: 20px;
-            animation: fall linear infinite;
-            z-index: 1;
-            opacity: 0.8;
-        }
+    #music-control {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      display: none;
+    }
 
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
+    #music-toggle {
+      background: rgba(217, 83, 79, 0.9);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
 
-        /* Nút điều khiển nhạc */
-        #music-control {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            display: none;
-        }
-
-        #music-toggle {
-            background: rgba(217, 83, 79, 0.9);
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 14px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-
-        #music-toggle:hover {
-            background: rgba(217, 83, 79, 1);
-            transform: scale(1.05);
-        }
-
-
-    </style>
+    #music-toggle:hover {
+      background: rgba(217, 83, 79, 1);
+      transform: scale(1.05);
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Nút bật/tắt nhạc -->
-    <div id="music-control">
-        <button id="music-toggle" onclick="toggleMusic()">
-            🎵 Tắt nhạc
-        </button>
+  <!-- Nút bật/tắt nhạc -->
+  <div id="music-control">
+    <button id="music-toggle" onclick="toggleMusic()">🎵 Tắt nhạc</button>
+  </div>
+
+  <!-- Nhạc nền -->
+  <audio id="background-music" loop preload="auto">
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="rose-container">
+    <a id="rose-link" onclick="revealContent()">🌹</a>
+  </div>
+
+  <div id="content">
+    <div id="scene">
+      <span id="student">🧑‍🎓</span>
+      <span id="teacher">👩‍🏫</span>
     </div>
+    <div id="message">Kính Chúc Mừng Ngày Nhà Giáo Việt Nam 20/11!</div>
+    <p style="color: #555;">Kính chúc Quý Thầy Cô luôn mạnh khỏe, hạnh phúc và thành công!</p>
+  </div>
 
-    <!-- Audio player ẩn -->
-    <audio id="background-music" loop>
-        <source src="Người Gieo Mầm Xanh.mp3" type="audio/mpeg">
-    </audio>
+  <script>
+    const music = document.getElementById('background-music');
 
-    <div id="rose-container">
-        <a id="rose-link" onclick="revealContent()">🌹</a>
-    </div>
+    function revealContent() {
+      document.getElementById('rose-container').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+      document.getElementById('music-control').style.display = 'block';
 
-    <div id="content">
-        <div id="scene">
-            <span id="student">🧑‍🎓</span>
-            <span id="teacher">👩‍🏫</span>
-        </div>
-        <div id="message">
-            Kính Chúc Mừng Ngày Nhà Giáo Việt Nam 20/11!
-        </div>
-        <p style="color: #555;">Kính chúc Quý Thầy Cô luôn mạnh khỏe, hạnh phúc và thành công!</p>
-    </div>
-    
-    <script>
-        const music = document.getElementById('background-music');
+      // Phát nhạc (đã tương thích Chrome/Edge autoplay)
+      const playPromise = music.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          document.getElementById('music-toggle').innerHTML = '🔇 Bật nhạc';
+          document.getElementById('music-toggle').style.background = 'rgba(255,152,0,0.9)';
+        });
+      }
 
-        function revealContent() {
-            document.getElementById('rose-container').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
-            document.getElementById('music-control').style.display = 'block';
-            
-            // Phát nhạc theo hướng dẫn của Google
-            const playPromise = music.play();
-            
-            if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                    // Autoplay started successfully
-                    console.log('Nhạc đang phát tự động');
-                })
-                .catch(error => {
-                    // Autoplay was prevented
-                    console.log('Không thể phát nhạc tự động:', error);
-                    // Hiển thị thông báo cho người dùng
-                    document.getElementById('music-toggle').innerHTML = '🔇 Bật nhạc';
-                    document.getElementById('music-toggle').style.background = 'rgba(255, 152, 0, 0.9)';
-                });
-            }
-            
-            startFlyingFlowers();
-            setTimeout(() => {
-                startFallingFlowers();
-            }, 1000);
-        }
+      startFlyingFlowers();
+      setTimeout(startFallingFlowers, 1000);
+    }
 
-        function toggleMusic() {
-            const button = document.getElementById('music-toggle');
-            
-            if (music.paused) {
-                music.play();
-                button.innerHTML = '🎵 Tắt nhạc';
-                button.style.background = 'rgba(217, 83, 79, 0.9)';
-            } else {
-                music.pause();
-                button.innerHTML = '🔇 Bật nhạc';
-                button.style.background = 'rgba(255, 152, 0, 0.9)';
-            }
-        }
+    function toggleMusic() {
+      const button = document.getElementById('music-toggle');
+      if (music.paused) {
+        music.play();
+        button.innerHTML = '🎵 Tắt nhạc';
+        button.style.background = 'rgba(217,83,79,0.9)';
+      } else {
+        music.pause();
+        button.innerHTML = '🔇 Bật nhạc';
+        button.style.background = 'rgba(255,152,0,0.9)';
+      }
+    }
 
-        function startFlyingFlowers() {
-            const student = document.getElementById('student');
-            const numBouquets = 5;
-            
-            // Gửi 5 bông đầu tiên
-            for (let i = 0; i < numBouquets; i++) {
-                setTimeout(() => {
-                    createFlyingBouquet(student);
-                }, i * 600);
-            }
-            
-            // Tiếp tục gửi bông hoa liên tục mỗi 2 giây
-            setInterval(() => {
-                createFlyingBouquet(student);
-            }, 2000);
-        }
+    function startFlyingFlowers() {
+      const student = document.getElementById('student');
+      for (let i = 0; i < 5; i++) setTimeout(() => createFlyingBouquet(student), i * 600);
+      setInterval(() => createFlyingBouquet(student), 2000);
+    }
 
-        function createFlyingBouquet(startElement) {
-            const bouquet = document.createElement('div');
-            bouquet.classList.add('flying-bouquet');
-            bouquet.innerHTML = '💐';
-            
-            const studentRect = startElement.getBoundingClientRect();
-            const teacherRect = document.getElementById('teacher').getBoundingClientRect();
-            const distance = teacherRect.left - studentRect.left;
-            
-            bouquet.style.left = studentRect.left + studentRect.width / 2 + 'px';
-            bouquet.style.top = studentRect.top + studentRect.height / 2 + 'px';
-            
-            const animName = 'bouquet' + Date.now();
-            const keyframes = `@keyframes ${animName} {
-                0% { opacity: 0; transform: scale(0.8) rotate(-15deg); }
-                10% { opacity: 1; }
-                30% { transform: translate(${distance * 0.25}px, -60px) scale(1.3) rotate(5deg); }
-                50% { transform: translate(${distance * 0.5}px, -80px) scale(1.4) rotate(10deg); }
-                70% { transform: translate(${distance * 0.75}px, -60px) scale(1.3) rotate(5deg); }
-                90% { opacity: 1; }
-                100% { transform: translate(${distance}px, 0) scale(1) rotate(0deg); opacity: 0; }
-            }`;
-            
-            const styleSheet = document.createElement('style');
-            styleSheet.textContent = keyframes;
-            document.head.appendChild(styleSheet);
-            
-            bouquet.style.animation = `${animName} 2.5s ease-in-out forwards`;
-            document.body.appendChild(bouquet);
-            
-            setTimeout(() => {
-                bouquet.remove();
-                styleSheet.remove();
-            }, 2500);
-        }
+    function createFlyingBouquet(startElement) {
+      const bouquet = document.createElement('div');
+      bouquet.classList.add('flying-bouquet');
+      bouquet.innerHTML = '💐';
 
-        function startFallingFlowers() {
-            const flowerTypes = ['🌸', '🌼', '🌷', '🏵️'];
-            const numFlowers = 30;
-            
-            for (let i = 0; i < numFlowers; i++) {
-                createFlower();
-            }
-            
-            setInterval(createFlower, 500);
-        }
+      const s = startElement.getBoundingClientRect();
+      const t = document.getElementById('teacher').getBoundingClientRect();
+      const distance = t.left - s.left;
 
-        function createFlower() {
-            const flowerTypes = ['🌸', '🌼', '🌷', '🏵️'];
-            const body = document.body;
-            const flower = document.createElement('div');
-            flower.classList.add('flower');
-            flower.innerHTML = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
-            flower.style.left = Math.random() * 100 + 'vw';
-            
-            const duration = Math.random() * 5 + 5;
-            flower.style.animationDuration = duration + 's';
-            flower.style.animationDelay = Math.random() * 5 + 's';
-            
-            body.appendChild(flower);
-            
-            setTimeout(() => {
-                flower.remove();
-            }, duration * 1000);
-        }
-    </script>
+      bouquet.style.left = s.left + s.width / 2 + 'px';
+      bouquet.style.top = s.top + s.height / 2 + 'px';
+
+      const anim = `bouquet${Date.now()}`;
+      const keyframes = `@keyframes ${anim} {
+        0% { opacity:0; transform:scale(0.8) rotate(-15deg); }
+        10% { opacity:1; }
+        50% { transform:translate(${distance*0.5}px,-80px) scale(1.4) rotate(10deg); }
+        100% { transform:translate(${distance}px,0) scale(1) rotate(0deg); opacity:0; }
+      }`;
+
+      const style = document.createElement('style');
+      style.textContent = keyframes;
+      document.head.appendChild(style);
+      bouquet.style.animation = `${anim} 2.5s ease-in-out forwards`;
+      document.body.appendChild(bouquet);
+
+      setTimeout(() => { bouquet.remove(); style.remove(); }, 2500);
+    }
+
+    function startFallingFlowers() {
+      for (let i = 0; i < 30; i++) createFlower();
+      setInterval(createFlower, 500);
+    }
+
+    function createFlower() {
+      const f = document.createElement('div');
+      f.classList.add('flower');
+      f.innerHTML = ['🌸', '🌼', '🌷', '🏵️'][Math.floor(Math.random() * 4)];
+      f.style.left = Math.random() * 100 + 'vw';
+      const duration = Math.random() * 5 + 5;
+      f.style.animationDuration = duration + 's';
+      f.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(f);
+      setTimeout(() => f.remove(), duration * 1000);
+    }
+  </script>
 </body>
 </html>
