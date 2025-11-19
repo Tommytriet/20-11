@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chúc Mừng Ngày 20/11</title>
-    <!-- Tải Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Tải font Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tải Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tải font Inter --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             overflow: hidden; /* Ẩn thanh cuộn */
         }
 
-        /* Animation cho bông hồng nhấp nháy (kết hợp scale và opacity) */
+        /* --- CÁC ANIMATION CŨ --- */
         @keyframes pulse-rose {
             0%, 100% {
                 transform: scale(1);
@@ -55,46 +53,74 @@
                 opacity: 0;
             }
         }
+
+        /* --- ANIMATION MỚI CHO CẢNH TẶNG HOA --- */
+        
+        /* Học sinh đi vào */
+        @keyframes student-walk {
+            0% { left: -20%; transform: translateY(-50%) scale(1); }
+            100% { left: 25%; transform: translateY(-50%) scale(1); } /* Chỉnh về 25% để sang trái */
+        }
+
+        /* Bó hoa đi theo học sinh rồi bay sang cô */
+        @keyframes flower-give {
+            0% { left: -15%; transform: translateY(-50%); opacity: 1; } 
+            60% { left: 30%; transform: translateY(-50%); } /* Chỉnh về 30% theo học sinh */
+            100% { left: 55%; transform: translateY(-50%); } 
+        }
+
+        /* Cô giáo nhận hoa vui mừng (nhún nhảy) */
+        @keyframes teacher-happy {
+            0%, 80% { transform: translateY(-50%) scale(1); }
+            85% { transform: translateY(-60%) scale(1.1); } /* Nhảy lên */
+            90% { transform: translateY(-50%) scale(1); }
+            95% { transform: translateY(-55%) scale(1.05); }
+            100% { transform: translateY(-50%) scale(1); }
+        }
+
+        /* Trái tim bay lên */
+        @keyframes heart-float {
+            0% { opacity: 0; transform: translateY(0) scale(0.5); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-50px) scale(1.2); }
+        }
+
     </style>
 </head>
 <body class="bg-gray-100">
 
-    <!-- Màn hình 1: Bông hồng nhấp nháy -->
-    <div id="page1" class="flex flex-col justify-center items-center min-h-screen bg-pink-50 transition-opacity duration-1000">
+    <!-- Màn hình 1: Bông hồng nhấp nháy --><div id="page1" class="flex flex-col justify-center items-center min-h-screen bg-pink-50 transition-opacity duration-1000">
         <div id="blinking-rose" class="text-8xl md:text-9xl cursor-pointer animate-pulse-rose">
             🌹
         </div>
         <p class="mt-8 text-xl text-pink-700 font-semibold">Click vào bông hồng nhé!</p>
     </div>
 
-    <!-- Màn hình 2: Lời chúc và hoa rơi -->
-    <!-- Ban đầu bị ẩn (hidden) và sẽ chuyển sang flex khi được click -->
-    <div id="page2" class="hidden justify-center items-center min-h-screen bg-gradient-to-br from-blue-200 to-cyan-100 relative">
+    <!-- Màn hình 2: Lời chúc và hoa rơi --><!-- Ban đầu bị ẩn (hidden) và sẽ chuyển sang flex khi được click --><div id="page2" class="hidden justify-center items-center min-h-screen bg-gradient-to-br from-blue-200 to-cyan-100 relative">
         
-        <!-- Container cho hoa rơi (nằm ở lớp sau cùng) -->
-        <div id="flower-container" class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-            <!-- Hoa sẽ được thêm vào đây bằng JavaScript -->
-        </div>
+        <!-- Container cho hoa rơi (nằm ở lớp sau cùng) --><div id="flower-container" class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+            <!-- Hoa sẽ được thêm vào đây bằng JavaScript --></div>
 
-        <!-- Thiệp chúc mừng (nằm ở lớp trên) -->
-        <div class="bg-white/90 backdrop-blur-sm p-6 md:p-10 rounded-2xl shadow-xl text-center max-w-lg w-11/12 z-10 mx-4 overflow-hidden">
-            <!-- Hình ảnh học sinh tặng hoa (đã cập nhật bằng hoạt cảnh Emoji) -->
-            <div class="relative w-full h-48 md:h-64 mb-6">
-                <!-- Học sinh (dịch sang trái) -->
-                <div id="student" class="text-7xl md:text-8xl absolute left-[5%] md:left-[10%] top-1/2 -translate-y-1/2 transition-all duration-1000 ease-in-out">
+        <!-- Thiệp chúc mừng (nằm ở lớp trên) --><div class="bg-white/90 backdrop-blur-sm p-6 md:p-10 rounded-2xl shadow-xl text-center max-w-lg w-11/12 z-10 mx-4 overflow-hidden">
+            
+            <!-- SÂN KHẤU HOẠT HÌNH (Đã khôi phục khung nền xanh dương, xóa bảng xanh lá) --><div class="w-full h-56 md:h-64 mb-6 relative overflow-hidden group bg-blue-50 rounded-lg border-2 border-blue-100 shadow-inner">
+                
+                <!-- Sàn nhà --><div class="absolute bottom-0 w-full h-8 bg-orange-100 border-t border-orange-200"></div>
+
+                <!-- Học Sinh (Vị trí đã điều chỉnh) --><div id="anim-student" class="absolute top-[65%] text-6xl md:text-7xl z-20" style="left: -20%; transform: translateY(-50%);">
                     🧑‍🎓
                 </div>
-                
-                <!-- Bó hoa (sẽ được di chuyển) -->
-                <div id="flower-bouquet" 
-                     class="text-5xl md:text-6xl absolute top-1/2"
-                     style="left: 20%; opacity: 0; transform: translateY(-50%) scale(0.8); transition: all 2s ease-in-out;">
+
+                <!-- Bó hoa (Vị trí đã điều chỉnh) --><div id="anim-flower" class="absolute top-[70%] right-[50%] text-4xl md:text-5xl z-30" style="left: -10%; transform: translateY(-50%);">
                     💐
                 </div>
-                
-                <!-- Cô giáo (dịch sang phải) -->
-                <div id="teacher" class="text-7xl md:text-8xl absolute right-[5%] md:right-[10%] top-1/2 -translate-y-1/2 transition-all duration-1000 ease-in-out">
+
+                <!-- Cô Giáo (Vị trí đã điều chỉnh) --><div id="anim-teacher" class="absolute right-[25%] top-[65%] text-6xl md:text-7xl z-20" style="transform: translateY(-50%);">
                     👩‍🏫
+                </div>
+
+                <!-- Trái tim cảm xúc (Vị trí đã điều chỉnh) --><div id="anim-hearts" class="absolute right-[25%] top-[40%] text-3xl hidden">
+                    ❤️
                 </div>
             </div>
             
@@ -102,7 +128,7 @@
                 Chúc Mừng Ngày 20/11
             </h1>
             <p class="text-lg text-gray-700 leading-relaxed">
-                Thay mặt tất cả mọi người chúc các bạn cô giáo luôn mạnh khỏe, hạnh phúc và gặt hái được nhiều thành công trong sự nghiệp của mình, kiếm được nhiều tiền để rước các con zợ và các thak chồng trong idv:)
+                Thay mặt tất cả mọi người chúc các bạn luôn mạnh khỏe, hạnh phúc và gặt hái được nhiều thành công trong sự nghiệp của mình, kiếm được nhiều tiền để rước các con zợ và các thak chồng trong idv:)
             </p>
         </div>
     </div>
@@ -114,6 +140,12 @@
             const rose = document.getElementById('blinking-rose');
             const flowerContainer = document.getElementById('flower-container');
             
+            // Các phần tử hoạt hình
+            const animStudent = document.getElementById('anim-student');
+            const animFlower = document.getElementById('anim-flower');
+            const animTeacher = document.getElementById('anim-teacher');
+            const animHearts = document.getElementById('anim-hearts');
+
             // Các loại hoa (emoji)
             const flowerTypes = ['🌸', '🌺', '🌼', '🌷', '🌻'];
 
@@ -121,70 +153,53 @@
             function createFlower() {
                 const flower = document.createElement('span');
                 flower.classList.add('flower');
-                
-                // Chọn ngẫu nhiên một loại hoa
                 flower.innerText = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
-                
-                // Vị trí bắt đầu ngẫu nhiên theo chiều ngang
                 flower.style.left = Math.random() * 100 + 'vw';
-                
-                // Thời gian rơi ngẫu nhiên (từ 7 đến 12 giây)
                 const duration = Math.random() * 5 + 7;
                 flower.style.animationDuration = duration + 's';
-                
-                // Độ mờ ngẫu nhiên
                 flower.style.opacity = Math.random() * 0.5 + 0.5;
-
-                // Thêm hoa vào container
                 flowerContainer.appendChild(flower);
-                
-                // Xóa bông hoa khỏi DOM sau khi nó rơi xong
-                setTimeout(() => {
-                    flower.remove();
-                }, duration * 1000);
+                setTimeout(() => { flower.remove(); }, duration * 1000);
             }
 
             // Xử lý sự kiện click vào bông hồng
             rose.addEventListener('click', () => {
-                // 1. Làm mờ trang 1
+                // 1. Hiệu ứng chuyển trang
                 page1.style.opacity = '0';
 
-                // 2. Sau khi mờ xong, ẩn trang 1 và hiện trang 2
                 setTimeout(() => {
                     page1.style.display = 'none';
-                    page2.style.display = 'flex'; // Hiển thị trang 2
+                    page2.style.display = 'flex'; 
                     
-                    // 3. Bắt đầu tạo mưa hoa
-                    // Cứ mỗi 250ms tạo một bông hoa mới
+                    // 2. Bắt đầu mưa hoa
                     setInterval(createFlower, 250);
-                    
-                    // 4. Kích hoạt hiệu ứng tặng hoa
-                    const flowerBouquet = document.getElementById('flower-bouquet');
-                    const teacher = document.getElementById('teacher');
-                    const student = document.getElementById('student');
 
-                    // Kích hoạt sau 500ms để người dùng kịp nhìn thấy
-                    setTimeout(() => {
-                        // Bó hoa xuất hiện và di chuyển sang phải
-                        flowerBouquet.style.opacity = '1';
-                        // Vị trí gần cô giáo (cập nhật vị trí mới)
-                        flowerBouquet.style.left = 'calc(95% - 6rem)'; 
-                        flowerBouquet.style.transform = 'translateY(-50%) scale(1)';
-                    }, 500);
+                    // 3. KÍCH HOẠT KỊCH BẢN HOẠT HÌNH (Timing chính xác)
                     
-                    // Sau khi hoa di chuyển xong (500ms trễ + 2000ms di chuyển)
+                    // Bước A: Học sinh đi vào (mất 2s)
+                    animStudent.style.transition = "left 2s ease-out";
+                    animStudent.style.left = "25%"; // Chỉnh về 25%
+                    
+                    // Bước B: Hoa đi cùng học sinh (mất 2s) ...
+                    animFlower.style.transition = "left 2s ease-out"; 
+                    animFlower.style.left = "30%"; // Chỉnh về 30%
+                    
+                    // Bước C: Sau khi học sinh đứng lại, Hoa bay sang cô (mất 1s)
                     setTimeout(() => {
-                        // Cô giáo nhận hoa và vui
-                        teacher.innerText = '🥰';
-                        teacher.style.transform = 'translateY(-50%) scale(1.1)'; // Phóng to cô giáo
-                        // Học sinh cũng vui
-                        student.innerText = '😊';
-                        student.style.transform = 'translateY(-50%) scale(1.05)';
-                        // Ẩn bó hoa đi
-                        flowerBouquet.style.opacity = '0';
-                    }, 2500); 
+                        animFlower.style.transition = "left 1s ease-in-out";
+                        animFlower.style.left = "50%"; // Bay sang tay cô (Điều chỉnh vị trí cuối cùng)
+                    }, 2200);
 
-                }, 1000); // Đợi 1 giây (thời gian của transition-opacity)
+                    // Bước D: Cô giáo nhận hoa và vui mừng (sau khi hoa đến nơi)
+                    setTimeout(() => {
+                        // Cô nhún nhảy
+                        animTeacher.style.animation = "teacher-happy 1s ease infinite";
+                        // Trái tim hiện lên
+                        animHearts.style.display = "block";
+                        animHearts.style.animation = "heart-float 1.5s ease-out infinite";
+                    }, 3200);
+
+                }, 1000); 
             });
         });
     </script>
